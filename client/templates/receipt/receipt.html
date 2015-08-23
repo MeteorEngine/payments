@@ -1,0 +1,17 @@
+<template name="mePaymentsReceipt">
+  <h1>Thanks for your order, {{name}}!</h1>
+
+  <h3>Here's your receipt:</h3>
+
+  <p>
+    {{#each items}}
+      <b>Item:</b> {{this.name}}
+      <br>
+      <b>Description:</b> {{this.description}}
+      <br>
+      <b>Amount:</b> {{this.amount}}
+      <br>
+    {{/each}}
+    <b>Total:</b> {{total}}
+  </p>
+</template>

@@ -1,0 +1,36 @@
+<template name="mePaymentsCheckout">
+  {{#unless hasOrder}}
+    <h1>Order Summary</h1>
+
+    {{#if items}}
+    
+      {{#each items}}
+        {{> products}}
+
+        {{#if mePaymentsHasCartPackage}}
+          <div>{{> meCartRemoveItem}}</div>
+        {{/if}}
+
+      {{/each}}
+
+      <div>{{> meCartClear}}</div>
+      <div>{{> mePaymentsPurchase}}</div>
+    {{else}}
+      {{#if mePaymentsHasCartPackage}}
+        <h2>No items in cart</h2>
+      {{else}}
+        <h2>Please select an item to buy</h2>
+      {{/if}}
+    {{/if}}
+
+  {{/unless}}
+
+  {{#if loading}}
+    <h2>Loading</h2>
+  {{else}}
+    {{#if hasOrder}}
+      {{> mePaymentsReceipt}}
+    {{/if}}
+  {{/if}}
+  <a href="/">Home</a>
+</template>
